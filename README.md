@@ -19,3 +19,7 @@ logger.Event(
     ceflog.Ext("dst", "127.0.0.1"),
 )
 ```
+
+More documentation can be found in the [GoDoc][godoc].
+
+[godoc]: https://godoc.org/github.com/xoebus/ceflog
