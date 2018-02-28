@@ -91,3 +91,15 @@ func TestCEFEvent(t *testing.T) {
 		})
 	}
 }
+
+func TestOddExtPair(t *testing.T) {
+	t.Parallel()
+
+	defer func() {
+		if r := recover(); r == nil {
+			t.Errorf("expected Ext() to panic on an odd number of keys but it did not")
+		}
+	}()
+
+	Ext("happy-key", "happy-value", "lonely-key")
+}
