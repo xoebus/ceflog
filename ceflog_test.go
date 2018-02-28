@@ -82,7 +82,7 @@ func TestCEFEvent(t *testing.T) {
 			var w bytes.Buffer
 			l := New(&w, testVendor, testProduct, testVersion)
 
-			l.LogEvent(tc.name, tc.signature, Sev(tc.severity), Ext(tc.extension...))
+			l.LogEvent(tc.signature, tc.name, Sev(tc.severity), Ext(tc.extension...))
 
 			actual := strings.TrimSpace(w.String())
 			if actual != tc.want {

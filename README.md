@@ -13,8 +13,8 @@ which threat analysis and monitor tools are able to ingest.
 logger := ceflog.New(w, "vendor", "product", "version")
 
 logger.Event(
-    "User login",
     "auth.new",
+    "User login",
     ceflog.Sev(0),
     ceflog.Ext("dst", "127.0.0.1"),
 )

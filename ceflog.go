@@ -31,7 +31,7 @@ func New(w io.Writer, vendor, product, version string) *Logger {
 }
 
 // LogEvent emits a new audit event to the log.
-func (l *Logger) LogEvent(name, signature string, sev Severity, ext Extension) {
+func (l *Logger) LogEvent(signature, name string, sev Severity, ext Extension) {
 	fmt.Fprintf(l.w, "CEF:%d|%s|%s|%s|%s|%s|%d|%s\n",
 		cefVersion,
 		l.vendor,
