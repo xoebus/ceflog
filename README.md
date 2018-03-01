@@ -4,15 +4,24 @@
 
 ## about
 
-The ArcSight Common Event Format can be used to emit audit logs in a format
-which threat analysis and monitor tools are able to ingest.
+The ArcSight Common Event Format (CEF) can be used to emit audit logs in a
+format which threat analysis and monitoring tools are able to ingest. There
+doesn't seem to be a de-facto specification online for CEF but if you search
+for *CEF log* you will find redistributions.
 
 ## usage
+
+The library is modeled as a logger rather than a sink which can be plugged into
+other logging libraries. This is because you only want to log audit-worthy
+events rather than logging everything. This would typically be tuned by
+adjusting the level (debug, info, warn, error, etc.) of a log message. This
+will not work in this case because some of the audit events you want to emit
+are not errors.
 
 ```go
 logger := ceflog.New(w, "vendor", "product", "version")
 
-logger.Event(
+logger.LogEvent(
     "auth.new",
     "User login",
     ceflog.Sev(0),
@@ -20,6 +29,6 @@ logger.Event(
 )
 ```
 
-More documentation can be found in the [GoDoc][godoc].
+More complete documentation can be found in the [GoDoc][godoc].
 
 [godoc]: https://godoc.org/github.com/xoebus/ceflog
